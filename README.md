@@ -15,6 +15,7 @@ pip install -r requirements.txt
 ```bash
 export BOT_TOKEN="123:ABC"
 export DATABASE_URL="sqlite://db.sqlite3"
+export BOT_ADMIN_IDS="123456789"
 ```
 
 3. Botni ishga tushiring:
@@ -33,6 +34,8 @@ python bot.py
 
 Bot guruhdagi oddiy javoblarni o'qishi kerak. BotFather orqali privacy mode o'chirilishi tavsiya qilinadi. Guruhda botni admin qilish ham message eventlar barqarorroq kelishiga yordam beradi.
 
+Bot ishlayotgan guruhlar `CrocodileChat` modelida saqlanadi: guruh nomi, turi, username, a'zolar soni va taklif havolasi. Bu ma'lumotlar `/play` bosilganda yoziladi va background task orqali har kuni yangilanadi. Taklif havolasini olish uchun botda yetarli admin huquqi bo'lishi kerak; aks holda link bo'sh qolishi mumkin.
+
 ## Flow
 
 Guruhda `/play` yozilganda bot o'yin yaratadi va `👋 Boshlovchi bo'lishni xohlayman!` tugmasini chiqaradi. Boshlovchi tugmani bosgach, random so'z tanlanadi. So'z guruhga yozilmaydi; `👀 So'zni ko'rish` tugmasi orqali faqat tushuntiruvchiga callback alertda ko'rsatiladi.
@@ -47,7 +50,8 @@ O'yin faqat `/stop` komandasi bilan tugatiladi. Tugaganda shu o'yin ichidagi his
 - `/play` - guruhda o'yin boshlash.
 - `/stop` - active o'yinni tugatish.
 - `/profile` - krokodil statistikasi.
-- `/top` - global krokodil reytingi.
+- `/top` - global krokodil reytingi, faqat bot admini uchun.
+- `/reyting` - guruhdagi o'yin reytingi.
 - `/addword <so'z>` - so'z qo'shish.
 - `/delword <so'z yoki id>` - so'zni inactive qilish.
 - `/words_count` - active so'zlar soni.

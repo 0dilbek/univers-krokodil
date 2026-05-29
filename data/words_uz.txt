@@ -1,0 +1,1000 @@
+olma
+anor
+uzum
+shaftoli
+o'rik
+gilos
+olcha
+nok
+behi
+anjir
+tarvuz
+qovun
+limon
+apelsin
+mandarin
+banan
+qulupnay
+malina
+bodring
+pomidor
+sabzi
+piyoz
+kartoshka
+karam
+lavlagi
+qalampir
+sarimsoq
+oshqovoq
+baqlajon
+redis
+sholg'om
+ko'kat
+rayhon
+kashnich
+yalpiz
+no'xat
+loviya
+mosh
+guruch
+bug'doy
+makkajo'xori
+arpa
+jo'xori
+kungaboqar
+yeryong'oq
+bodom
+pista
+yong'oq
+mayiz
+turshak
+non
+patir
+somsa
+palov
+manti
+chuchvara
+lag'mon
+sho'rva
+mastava
+norin
+shashlik
+kabob
+dimlama
+dolma
+do'lma
+qovurma
+kotlet
+tuxum
+qaymoq
+sut
+qatiq
+suzma
+pishloq
+sariyog'
+asal
+murabbo
+shakar
+tuz
+choy
+qahva
+kompot
+sharbat
+ayron
+limonad
+muzqaymoq
+tort
+pishiriq
+pechenye
+shokolad
+konfet
+holva
+chakchak
+sumalak
+osh
+salat
+sosiska
+makaron
+grechka
+jo'xori uni
+uy
+hovli
+tom
+devor
+eshik
+deraza
+zinapoya
+xona
+mehmonxona
+yotoqxona
+oshxona
+hammom
+omborxona
+ayvon
+darvoza
+panjara
+gilam
+ko'rpa
+yostiq
+choyshab
+adyol
+karavot
+divan
+kreslo
+stul
+stol
+javon
+shkaf
+tokcha
+ko'zgu
+parda
+soat
+chiroq
+lampochka
+rozetka
+kalit
+qulf
+supurgi
+chelak
+latta
+sovun
+shampun
+tish cho'tkasi
+tish pastasi
+sochiq
+dazmol
+dazmol taxtasi
+kir mashinasi
+changyutgich
+muzlatkich
+gaz plita
+qozon
+tova
+kapkir
+cho'mich
+pichoq
+sanchqi
+qoshiq
+lagan
+tarelka
+piyola
+stakan
+choynak
+termos
+elak
+taxta
+o'qlov
+likopcha
+patnis
+duhovka
+mikroto'lqinli pech
+blender
+go'sht maydalagich
+shakar idishi
+tuzdon
+non qutisi
+suv idishi
+qopqoq
+konserva ochgich
+qaychi
+idish yuvish vositasi
+gubka
+salfetka
+paket
+sumka
+savat
+bochka
+xum
+ko'za
+lagancha
+kosa
+shisha banka
+temir qoshiq
+yog'och taxta
+oshxona fartugi
+avtomobil
+mashina
+taksi
+avtobus
+tramvay
+trolleybus
+metro
+poyezd
+samolyot
+vertolyot
+kema
+qayiq
+parom
+yuk mashinasi
+tez yordam
+o't o'chirish mashinasi
+politsiya mashinasi
+traktor
+kombayn
+mototsikl
+skuter
+velosiped
+arava
+ot arava
+chana
+roller
+samokat
+raketa
+yo'l
+ko'prik
+chorraha
+bekat
+vokzal
+aeroport
+port
+garaj
+yoqilg'i quyish shoxobchasi
+svetofor
+yo'l belgisi
+rul
+g'ildirak
+shina
+motor
+tormoz
+xavfsizlik kamari
+oyna tozalagich
+signal
+chipta
+haydovchi
+yo'lovchi
+o'qituvchi
+shifokor
+hamshira
+jarroh
+stomatolog
+dorixonachi
+oshpaz
+novvoy
+sartarosh
+tikuvchi
+uchuvchi
+konduktor
+dehqon
+bog'bon
+chorvador
+baliqchi
+quruvchi
+g'isht teruvchi
+bo'yoqchi
+duradgor
+temirchi
+payvandchi
+elektrik
+santexnik
+dasturchi
+dizayner
+fotograf
+jurnalist
+boshlovchi
+aktyor
+aktrisa
+qo'shiqchi
+raqqosa
+musiqachi
+rassom
+yozuvchi
+shoir
+tarjimon
+advokat
+sudya
+militsioner
+qo'riqchi
+askar
+ofitsiant
+sotuvchi
+kassir
+bankir
+hisobchi
+menejer
+ot
+sigir
+qo'y
+echki
+tuya
+eshak
+it
+mushuk
+quyon
+tovuq
+xo'roz
+o'rdak
+g'oz
+kurka
+kabutar
+chumchuq
+qarg'a
+burgut
+lochin
+boyo'g'li
+laylak
+turna
+qaldirg'och
+tuyaqush
+tovus
+sher
+yo'lbars
+fil
+jirafa
+zebra
+maymun
+ayiq
+bo'ri
+tulki
+kiyik
+qunduz
+tipratikan
+olmaxon
+ilon
+timsoh
+kaltakesak
+toshbaqa
+qurbaqa
+baliq
+akula
+delfin
+kit
+pingvin
+asalari
+kapalak
+chumoli
+pashsha
+chivin
+o'rgimchak
+chigirtka
+qo'ng'iz
+qurt
+tabiat
+quyosh
+oy
+yulduz
+osmon
+bulut
+yomg'ir
+qor
+do'l
+shamol
+bo'ron
+chaqmoq
+momaqaldiroq
+kamalak
+tuman
+muz
+soy
+daryo
+ko'l
+dengiz
+okean
+tog'
+tepa
+cho'l
+o'rmon
+daraxt
+gul
+barg
+ildiz
+shox
+maysa
+tuproq
+qum
+tosh
+g'or
+sharshara
+buloq
+orol
+qirg'oq
+vodiy
+dala
+bog'
+issiq
+sovuq
+bahor
+yoz
+kuz
+qish
+tong
+kecha
+futbol
+basketbol
+voleybol
+tennis
+stol tennisi
+badminton
+shaxmat
+shashka
+kurash
+boks
+dzyudo
+karate
+taekvondo
+yugurish
+suzish
+sakrash
+velosport
+gimnastika
+figurali uchish
+xokkey
+chang'i
+kamondan otish
+ot sporti
+poyga
+darvozabon
+hakam
+murabbiy
+jamoa
+stadion
+maydon
+to'p
+raketka
+medal
+kubok
+forma
+hushtak
+turnir
+musobaqa
+g'alaba
+mag'lubiyat
+durrang
+jarima
+penalti
+zarba
+pas
+gol
+rekord
+muxlis
+olimpiada
+kitob
+daftar
+qalam
+ruchka
+o'chirg'ich
+chizg'ich
+qalamdon
+doska
+bo'r
+marker
+parta
+sinf
+maktab
+universitet
+bog'cha
+dars
+imtihon
+baholash
+kundalik
+jadval
+xarita
+globus
+kompyuter
+printer
+skaner
+klaviatura
+sichqoncha
+monitor
+proyektor
+fleshka
+papka
+qog'oz
+kitob javoni
+kutubxona
+laboratoriya
+tajriba
+mikroskop
+kalkulyator
+yelim
+rangli qalam
+akvarel
+albom
+referat
+ma'ruza
+seminar
+o'quvchi
+talaba
+dekan
+ko'ylak
+shim
+kostyum
+pidjak
+kamzul
+futbolka
+sviter
+kurtka
+palto
+plash
+sharf
+qalpoq
+do'ppi
+shlyapa
+ro'mol
+belbog'
+kamar
+paypoq
+etik
+tufli
+krossovka
+shippak
+qo'lqop
+ko'zoynak
+uzuk
+bilaguzuk
+zanjir
+taqinchoq
+hamyon
+soyabon
+niqob
+galstuk
+kapalak galstuk
+fartuk
+pijama
+xalat
+cho'milish kiyimi
+sport kiyimi
+ish kiyimi
+kelin ko'ylagi
+kuyov kostyumi
+mahsi
+kalish
+telpak
+quloqchin
+telefon
+smartfon
+planshet
+noutbuk
+televizor
+radio
+karnay
+mikrofon
+kamera
+fotoapparat
+videokamera
+zaryadlovchi
+batareya
+sim
+wifi
+router
+modem
+antenna
+pult
+konditsioner
+ventilyator
+isitgich
+elektr choynak
+fen
+elektr ustara
+robot changyutgich
+aqlli soat
+joystik
+o'yin konsoli
+dron
+navigator
+bankomat
+terminal
+elektron tarozi
+kassa apparati
+tikuv mashinasi
+kir yuvish mashinasi
+idish yuvish mashinasi
+muzlatgich
+pech
+signalizatsiya
+domofon
+lift tugmasi
+qurilma
+bozor
+do'kon
+supermarket
+dorixona
+kasalxona
+poliklinika
+muzey
+teatr
+kinoteatr
+sport zal
+masjid
+cherkov
+restoran
+kafe
+choyxona
+sartaroshxona
+tikuvxona
+ustaxona
+bank
+pochta
+park
+hayvonot bog'i
+akvapark
+ko'cha
+mahalla
+qishloq
+shahar
+viloyat
+poytaxt
+ferma
+tokzor
+ombor
+zavod
+fabrika
+ofis
+sud
+hokimiyat
+elchixona
+yurish
+o'tirish
+turish
+yotish
+uxlash
+uyg'onish
+kulish
+yig'lash
+gapirish
+tinglash
+ko'rish
+hidlamoq
+tatib ko'rish
+ushlash
+ko'tarish
+tushirish
+itarish
+tortish
+ochish
+yopish
+yozish
+o'qish
+chizish
+bo'yash
+kesish
+yopishtirish
+yuvish
+artish
+supurish
+pishirish
+qaynatish
+qovurish
+ichish
+yeyish
+chaqirish
+qo'ng'iroq qilish
+raqsga tushish
+kuylash
+suratga olish
+haydash
+uchish
+baliq ovlash
+ekish
+sug'orish
+terish
+tikish
+tuzatish
+bosh
+soch
+peshona
+qosh
+ko'z
+burun
+quloq
+og'iz
+tish
+til
+lab
+yuz
+iyak
+bo'yin
+yelka
+qo'l
+tirsak
+bilak
+kaft
+barmoq
+tirnoq
+ko'krak
+bel
+qorin
+orqa
+oyoq
+tizza
+tovon
+yurak
+miya
+o'pka
+oshqozon
+suyak
+qon
+isitma
+yo'tal
+tumov
+gripp
+dori
+ukol
+bog'ich
+gips
+termometr
+shifoxona
+stetoskop
+qo'ltiqtayoq
+nogiron aravachasi
+qo'shiq
+raqs
+musiqa
+doira
+dutor
+rubob
+tanbur
+surnay
+pianino
+gitara
+skripka
+baraban
+konsert
+sahna
+tomoshabin
+rejissyor
+film
+multfilm
+serial
+afisha
+rol
+ssenariy
+she'r
+roman
+ertak
+maqol
+topishmoq
+rasm
+portret
+haykal
+bo'yoq
+mo'yqalam
+galereya
+ko'rgazma
+operator
+montaj
+kadr
+multqahramon
+masxaraboz
+qo'g'irchoq teatri
+karikatura
+fokus
+aplodisment
+bayram
+to'y
+nikoh
+kelin
+kuyov
+sovchi
+mehmon
+dasturxon
+sovg'a
+tabrik
+tug'ilgan kun
+yangi yil
+navro'z
+ramazon
+hayit
+mustaqillik kuni
+konstitutsiya kuni
+sumalak sayli
+hashar
+mahalla yig'ini
+kelin salom
+beshik to'yi
+sunnat to'yi
+fotiha
+duo
+osh tarqatish
+mehmondorchilik
+choy uzatish
+non sindirish
+raqs davrasi
+gulchambar
+shar
+bayroq
+bezash
+taklifnoma
+suratga tushish
+navbatchi
+qarindosh
+qo'shni
+do'st
+ona
+ota
+buvi
+buva
+aka
+opa
+uka
+singil
+o'yinchoq
+qo'g'irchoq
+mashinacha
+koptok
+kubik
+pazl
+lego
+ayiqcha
+arg'imchoq
+sirpanchiq
+karusel
+pufak
+varrak
+rangli shar
+ertak kitobi
+besik
+aravacha
+so'rg'ich
+taglik
+bolalar maydonchasi
+belanchak
+qum qutisi
+bo'yash kitobi
+plastilin
+konstruktor
+robot o'yinchoq
+samolyotcha
+poezdcha
+barabancha
+sevimli qahramon
+multfilm qahramoni
+bog'cha opa
+enaga
+alla
+chaqaloq
+emaklash
+yurishni o'rganish
+maktab formasi
+portfel
+tanaffus
+qo'ng'iroq
+kundalik daftar
+bahona
+shirinlik
+attraksion
+ekin maydoni
+paxta
+bug'doyzor
+sholi
+poliz
+issiqxona
+ariq
+kanal
+quduq
+nasos
+ketmon
+belkurak
+o'roq
+tesha
+plug
+urug'
+ko'chat
+nihol
+hosil
+somon
+xashak
+pichan
+molxona
+qo'yxona
+tovuqxona
+otxona
+fermer
+cho'pon
+podachi
+sut sog'ish
+jun qirqish
+tuxum terish
+uzum terish
+paxta terish
+meva terish
+daraxt ekish
+yer haydash
+o'g'it
+bozorda sotish
+qishloq yo'li
+loy
+ariqdan sakrash
+paxsa devor
+tandir
+o'tin
+sigir sog'ish
+asalari uyasi
+shahar hokimiyati
+yo'l polisi
+tezkor aloqa
+internet kafe
+mobil aloqa
+pochta qutisi
+xat
+posilka
+pasport
+guvohnoma
+chipta kassasi
+navbat
+lift
+eskalator
+piyodalar o'tish joyi
+yerosti yo'li
+avtoturargoh
+yo'l ta'miri
+ko'cha chirog'i
+chiqindi qutisi
+favvora
+reklama banneri
+e'lon taxtasi
+bozor rastasi
+narx yorlig'i
+chegirma
+kvitansiya
+to'lov
+bank kartasi
+naqd pul
+valyuta ayirboshlash
+xizmat ko'rsatish
+call markaz
+buyurtma
+yetkazib berish
+kuryer
+taksi chaqirish
+mehmon kutish
+ro'yxatdan o'tish
+navbat raqami
+qabulxona
+ma'lumotnoma
+qorovulxona
+turniket
+kamera nazorati
+baxt
+xursandchilik
+hayrat
+qo'rquv
+uyat
+jahl
+zerikish
+charchoq
+uyqu
+ochlik
+chanqoq
+sovuqqotish
+terlash
+shoshilish
+kutish
+adashish
+topish
+yo'qotish
+yordam so'rash
+kechikish
+uchrashuv
+xayrlashish
+salomlashish
+kechirim so'rash
+minnatdorchilik
+sir saqlash
+hazil
+bahs
+kelishuv
+tanlov
+orzu
+reja
+esdalik
+surpriz
+sarguzasht
+sayohat
+dam olish
+mehnat
+mashq
+sinov
+g'urur
+ishonch
+umid
+sabr
+ehtiyotkorlik
+jasorat
+omad
+tavakkal
+diqqat
+xotira
+nonvoyxona
+tandir non
+issiq choy
+ko'k choy
