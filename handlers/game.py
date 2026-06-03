@@ -16,13 +16,14 @@ from services.game_state import (
     skip_round,
     start_round,
 )
+from services.permissions import is_group_admin, is_group_chat
 from services.users import get_or_create_user, telegram_user_id, user_mention
 
 router = Router()
 
 
 def is_group(message: Message) -> bool:
-    return message.chat.type in {"group", "supergroup"}
+    return is_group_chat(message)
 
 
 def is_future(value) -> bool:
@@ -51,14 +52,14 @@ async def start_help(message: Message) -> None:
     keyboard = await add_to_group_keyboard(message)
     await message.answer(
         "🐊 <b>Univers Krokodil</b> - do'stlar bilan so'z topish o'yini.\n\n"
-        "Botni guruhga qo'shing va guruhda <b>/play</b> yozing. "
+        "Botni guruhga qo'shing va guruh admini <b>/play</b> yozadi. "
         "Keyin kimdir <b>boshlovchi bo'lish</b> tugmasini bosadi.\n\n"
         "Boshlovchiga yashirin so'z ko'rsatiladi. U so'zni aytmasdan, "
         "imo-ishora yoki tushuntirish orqali boshqalarga topdiradi. "
         "Guruhdagilar javobni chatga yozadi.\n\n"
         "Kim birinchi bo'lib to'g'ri topsa, ball oladi va keyingi so'zni "
         "tushuntirish navbatini olishi mumkin.\n\n"
-        "O'yinni tugatish uchun guruhda <b>/stop</b> yozing.",
+        "O'yinni tugatish uchun guruh admini <b>/stop</b> yozadi.",
         reply_markup=keyboard,
     )
 
@@ -67,6 +68,9 @@ async def start_help(message: Message) -> None:
 async def play(message: Message) -> None:
     if not is_group(message):
         await message.answer("Krokodil o'yini faqat guruh yoki superguruhda ishlaydi.")
+        return
+    if not await is_group_admin(message):
+        await message.answer("O'yinni faqat guruh adminlari boshlashi mumkin.")
         return
 
     await upsert_crocodile_chat_from_message(message.chat, message.bot)
@@ -92,6 +96,9 @@ async def play(message: Message) -> None:
 async def stop(message: Message) -> None:
     if not is_group(message):
         await message.answer("Bu komanda guruhdagi o'yin uchun.")
+        return
+    if not await is_group_admin(message):
+        await message.answer("O'yinni faqat guruh adminlari to'xtatishi mumkin.")
         return
     async with locked_game(message.chat.id):
         game = await get_active_game(message.chat.id)

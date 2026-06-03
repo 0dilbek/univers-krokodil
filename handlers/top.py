@@ -5,6 +5,7 @@ from aiogram.types import Message
 from config import settings
 from models.crocodile import CrocodileProfile
 from services.game_state import get_active_game, group_rating_text, scoreboard_text
+from services.permissions import is_group_admin, is_group_chat
 from services.users import display_name
 
 router = Router()
@@ -12,6 +13,10 @@ router = Router()
 
 @router.message(Command("top"))
 async def top(message: Message) -> None:
+    if is_group_chat(message):
+        await message.answer(await group_rating_text(message.chat.id))
+        return
+
     if not message.from_user or message.from_user.id not in settings.bot_admin_ids:
         await message.answer("Bu buyruq faqat bot admini uchun.")
         return
@@ -33,8 +38,11 @@ async def top(message: Message) -> None:
 
 @router.message(Command("reyting"))
 async def reyting(message: Message) -> None:
-    if message.chat.type not in {"group", "supergroup"}:
+    if not is_group_chat(message):
         await message.answer("Guruh reytingi faqat guruhda ko'rsatiladi.")
+        return
+    if not await is_group_admin(message):
+        await message.answer("Reytingni faqat guruh adminlari ko'ra oladi.")
         return
 
     game = await get_active_game(message.chat.id)

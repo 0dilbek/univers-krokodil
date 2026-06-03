@@ -38,20 +38,20 @@ Bot ishlayotgan guruhlar `CrocodileChat` modelida saqlanadi: guruh nomi, turi, u
 
 ## Flow
 
-Guruhda `/play` yozilganda bot o'yin yaratadi va `👋 Boshlovchi bo'lishni xohlayman!` tugmasini chiqaradi. Boshlovchi tugmani bosgach, random so'z tanlanadi. So'z guruhga yozilmaydi; `👀 So'zni ko'rish` tugmasi orqali faqat tushuntiruvchiga callback alertda ko'rsatiladi.
+Guruh admini `/play` yozganda bot o'yin yaratadi va `👋 Boshlovchi bo'lishni xohlayman!` tugmasini chiqaradi. Boshlovchi tugmani bosgach, random so'z tanlanadi. So'z guruhga yozilmaydi; `👀 So'zni ko'rish` tugmasi orqali faqat tushuntiruvchiga callback alertda ko'rsatiladi.
 
 Guruhdagi oddiy matnlar javob sifatida tekshiriladi. Birinchi to'g'ri topgan foydalanuvchi `+1` ball oladi va 15 soniya davomida keyingi boshlovchi bo'lishda ustuvor huquqqa ega bo'ladi. 15 soniyadan keyin istalgan foydalanuvchi navbatni olishi mumkin.
 
-O'yin faqat `/stop` komandasi bilan tugatiladi. Tugaganda shu o'yin ichidagi hisob chiqariladi.
+O'yin faqat guruh admini yuborgan `/stop` komandasi bilan tugatiladi. Tugaganda shu o'yin ichidagi hisob chiqariladi.
 
 ## Commandlar
 
 - `/start`, `/help` - qisqa ma'lumot.
-- `/play` - guruhda o'yin boshlash.
-- `/stop` - active o'yinni tugatish.
+- `/play` - guruhda o'yin boshlash, faqat guruh adminlari uchun.
+- `/stop` - active o'yinni tugatish, faqat guruh adminlari uchun.
 - `/profile` - krokodil statistikasi.
-- `/top` - global krokodil reytingi, faqat bot admini uchun.
-- `/reyting` - guruhdagi o'yin reytingi.
+- `/top` - guruhda shu guruh TOP reytingi, bot bilan privat chatda global TOP reyting, faqat bot admini uchun.
+- `/reyting` - guruhdagi active o'yin hisobi yoki guruh reytingi, faqat guruh adminlari uchun.
 - `/addword <so'z>` - so'z qo'shish.
 - `/delword <so'z yoki id>` - so'zni inactive qilish.
 - `/words_count` - active so'zlar soni.

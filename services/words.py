@@ -8,10 +8,58 @@ from models.crocodile import CrocodileWord
 
 _SPACE_RE = re.compile(r"\s+")
 _PUNCT_RE = re.compile(r"[^\w\s]+", re.UNICODE)
+_CYRILLIC_TO_LATIN = {
+    "а": "a",
+    "б": "b",
+    "в": "v",
+    "г": "g",
+    "д": "d",
+    "ё": "yo",
+    "ж": "j",
+    "з": "z",
+    "и": "i",
+    "й": "y",
+    "к": "k",
+    "л": "l",
+    "м": "m",
+    "н": "n",
+    "о": "o",
+    "п": "p",
+    "р": "r",
+    "с": "s",
+    "т": "t",
+    "у": "u",
+    "ф": "f",
+    "х": "x",
+    "ц": "ts",
+    "ч": "ch",
+    "ш": "sh",
+    "ъ": "",
+    "ь": "",
+    "э": "e",
+    "ю": "yu",
+    "я": "ya",
+    "ў": "o'",
+    "қ": "q",
+    "ғ": "g'",
+    "ҳ": "h",
+}
+_YE_PREVIOUS_CHARS = set(" \t\n\r-_'`ʻʼ’\"([{аоэеиуўюяё")
+
+
+def cyrillic_to_latin(text: str) -> str:
+    result = []
+    for index, char in enumerate(text):
+        if char == "е":
+            previous = text[index - 1] if index else " "
+            result.append("ye" if previous in _YE_PREVIOUS_CHARS else "e")
+            continue
+        result.append(_CYRILLIC_TO_LATIN.get(char, char))
+    return "".join(result)
 
 
 def normalize_answer(text: str) -> str:
-    value = text.lower().strip()
+    value = cyrillic_to_latin(text.lower().strip())
     value = _PUNCT_RE.sub("", value)
     return _SPACE_RE.sub(" ", value).strip()
 
