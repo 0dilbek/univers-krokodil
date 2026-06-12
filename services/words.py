@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 from random import randrange
 
-from constants import DEFAULT_WORDS_FILE
+from constants import CATEGORIES_WORDS_FILE, DEFAULT_WORDS_FILE
 from models.crocodile import CrocodileWord
 
 
@@ -76,10 +76,22 @@ def word_mask(text: str) -> str:
     return " ".join(parts)
 
 
-async def get_random_word(language: str = "uz") -> CrocodileWord:
-    query = CrocodileWord.filter(is_active=True, language=language)
+CATEGORIES = {
+    "oddiy": "Oddiy so'zlar",
+    "kino": "Kino va multfilm",
+    "tarixiy": "Tarixiy shaxslar",
+    "musiqa": "Musiqa",
+}
+CATEGORIES_FILE = CATEGORIES_WORDS_FILE
+
+
+async def get_random_word(language: str = "uz", category: str | None = None) -> CrocodileWord:
+    filters: dict = {"is_active": True, "language": language}
+    if category:
+        filters["category"] = category
+    query = CrocodileWord.filter(**filters)
     count = await query.count()
-    if count == 0:
+    if count == 0 and not category:
         await import_words_from_file(DEFAULT_WORDS_FILE, language=language)
         count = await query.count()
     if count == 0:
@@ -93,18 +105,29 @@ async def import_words_from_file(path: str, language: str = "uz") -> int:
     if not file_path.exists():
         return 0
     count = 0
+    current_category: str | None = None
     with file_path.open("r", encoding="utf-8") as file:
         for line in file:
             text = line.strip()
             if not text or text.startswith("#"):
                 continue
+            if text.startswith("[") and text.endswith("]"):
+                current_category = text[1:-1].lower()
+                continue
             word, created = await CrocodileWord.get_or_create(
                 text=text,
-                defaults={"language": language, "difficulty": "medium", "is_active": True},
+                defaults={
+                    "language": language,
+                    "category": current_category,
+                    "difficulty": "medium",
+                    "is_active": True,
+                },
             )
             if not word.is_active:
                 word.is_active = True
                 word.language = language
+                if current_category:
+                    word.category = current_category
                 await word.save()
             if created:
                 count += 1

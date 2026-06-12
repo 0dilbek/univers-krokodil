@@ -4,6 +4,7 @@ IDLE_TIMEOUT_SECONDS = 60 * 60
 DB_FLUSH_INTERVAL_SECONDS = 5
 CHAT_REFRESH_INTERVAL_SECONDS = 60 * 60 * 24
 DEFAULT_WORDS_FILE = "data/words_uz.txt"
+CATEGORIES_WORDS_FILE = "data/words_uz_categories.txt"
 
 BTN_CLAIM = "👋 Boshlovchi bo'lishni xohlayman!"
 BTN_SHOW_WORD = "👀 So'zni ko'rish"
