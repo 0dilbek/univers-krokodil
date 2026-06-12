@@ -7,6 +7,7 @@ from aiogram.enums import ParseMode
 from tortoise import Tortoise
 
 from config import TORTOISE_ORM, load_settings
+from database import run_migrations
 from handlers import router
 from middlewares.delete_commands import DeleteCommandMiddleware
 from services.bot_commands import setup_bot_commands
@@ -23,6 +24,7 @@ async def main() -> None:
 
     await Tortoise.init(config=TORTOISE_ORM)
     await Tortoise.generate_schemas(safe=True)
+    await run_migrations()
     await restore_active_games_on_startup()
 
     bot = Bot(
