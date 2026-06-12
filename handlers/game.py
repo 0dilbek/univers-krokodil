@@ -4,7 +4,8 @@ from aiogram import F, Router
 from aiogram.filters import Command
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from keyboards.game import claim_keyboard, round_keyboard
+from keyboards.game import category_keyboard, claim_keyboard, round_keyboard
+from services.words import CATEGORIES
 from models.crocodile import CrocodileGame
 from services.chats import upsert_crocodile_chat_from_message
 from services.game_runtime import locked_game
@@ -16,7 +17,7 @@ from services.game_state import (
     skip_round,
     start_round,
 )
-from services.permissions import is_group_admin, is_group_chat
+from services.permissions import GROUP_ADMIN_STATUSES, is_group_admin, is_group_chat
 from services.users import get_or_create_user, telegram_user_id, user_mention
 
 router = Router()
@@ -74,22 +75,65 @@ async def play(message: Message) -> None:
         return
 
     await upsert_crocodile_chat_from_message(message.chat, message.bot)
-    user = await get_or_create_user(message.from_user)
     async with locked_game(message.chat.id):
         game = await get_active_game(message.chat.id)
         if game:
+            cat_label = CATEGORIES.get(game.category or "", "Aralash")
             await message.answer(
-                "🎮 Bu guruhda krokodil o'yini allaqachon boshlangan.\nKim so'zni tushuntiradi?",
+                f"🎮 Bu guruhda krokodil o'yini allaqachon boshlangan.\n"
+                f"📂 Turkum: <b>{cat_label}</b>\nKim so'zni tushuntiradi?",
                 reply_markup=claim_keyboard(game.id),
             )
             return
-        game = await create_game(message.chat.id, message.chat.type, user)
-        sent = await message.answer(
-            "🎮 Krokodil o'yini boshlandi.\nKim so'zni tushuntiradi?",
+    await message.answer(
+        "🎮 Krokodil o'yinini boshlash uchun so'zlar turkumini tanlang:",
+        reply_markup=category_keyboard(message.chat.id),
+    )
+
+
+@router.callback_query(F.data.startswith("cr:cat:"))
+async def select_category(callback: CallbackQuery) -> None:
+    if not callback.message:
+        await callback.answer()
+        return
+    parts = callback.data.split(":")
+    category = parts[2]
+    chat_id = int(parts[3])
+
+    try:
+        member = await callback.bot.get_chat_member(chat_id, callback.from_user.id)
+    except Exception:
+        await callback.answer("Ruxsat tekshirib bo'lmadi.", show_alert=True)
+        return
+    if member.status not in GROUP_ADMIN_STATUSES:
+        await callback.answer("O'yinni faqat guruh adminlari boshlashi mumkin.", show_alert=True)
+        return
+
+    await upsert_crocodile_chat_from_message(callback.message.chat, callback.message.bot)
+    user = await get_or_create_user(callback.from_user)
+
+    async with locked_game(chat_id):
+        game = await get_active_game(chat_id)
+        if game:
+            cat_label = CATEGORIES.get(game.category or "", "Aralash")
+            await callback.message.edit_text(
+                f"🎮 Bu guruhda krokodil o'yini allaqachon boshlangan.\n"
+                f"📂 Turkum: <b>{cat_label}</b>\nKim so'zni tushuntiradi?",
+                reply_markup=claim_keyboard(game.id),
+            )
+            await callback.answer()
+            return
+        stored_cat = category if category != "aralash" else None
+        game = await create_game(chat_id, callback.message.chat.type, user, category=stored_cat)
+        cat_label = CATEGORIES.get(category, "Aralash")
+        sent = await callback.message.edit_text(
+            f"🎮 Krokodil o'yini boshlandi!\n"
+            f"📂 Turkum: <b>{cat_label}</b>\nKim so'zni tushuntiradi?",
             reply_markup=claim_keyboard(game.id),
         )
         game.message_id = sent.message_id
         await game.save()
+    await callback.answer()
 
 
 @router.message(Command("stop"))

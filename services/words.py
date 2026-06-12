@@ -89,14 +89,21 @@ async def get_random_word(language: str = "uz", category: str | None = None) -> 
     filters: dict = {"is_active": True, "language": language}
     if category:
         filters["category"] = category
-    query = CrocodileWord.filter(**filters)
-    count = await query.count()
-    if count == 0 and not category:
+
+    async def _count() -> int:
+        return await CrocodileWord.filter(**filters).count()
+
+    if await _count() == 0:
+        await import_words_from_file(CATEGORIES_FILE, language=language)
+    if await _count() == 0:
         await import_words_from_file(DEFAULT_WORDS_FILE, language=language)
-        count = await query.count()
+
+    count = await _count()
     if count == 0:
-        raise ValueError("Active crocodile words not found. Import words first.")
-    word = await query.offset(randrange(count)).first()
+        msg = f"'{category}' turkumida so'z topilmadi." if category else "So'zlar bazasi bo'sh."
+        raise ValueError(msg)
+
+    word = await CrocodileWord.filter(**filters).offset(randrange(count)).first()
     return word
 
 

@@ -53,6 +53,7 @@ class CrocodileGame(models.Model):
     chat_id = fields.BigIntField(index=True)
     chat_type = fields.CharField(max_length=32)
     status = fields.CharField(max_length=16, default="waiting", index=True)
+    category = fields.CharField(max_length=64, null=True)
     starter = fields.ForeignKeyField("models.User", related_name="started_crocodile_games")
     current_explainer = fields.ForeignKeyField(
         "models.User", related_name="explaining_crocodile_games", null=True

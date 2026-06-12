@@ -1,0 +1,1 @@
+ALTER TABLE crocodile_games ADD COLUMN IF NOT EXISTS category VARCHAR(64) NULL;

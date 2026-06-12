@@ -8,6 +8,7 @@ from tortoise import Tortoise
 
 from config import TORTOISE_ORM, load_settings
 from handlers import router
+from middlewares.delete_commands import DeleteCommandMiddleware
 from services.bot_commands import setup_bot_commands
 from services.game_watchdog import chat_refresh_loop, restore_active_games_on_startup, watchdog_loop
 
@@ -29,6 +30,7 @@ async def main() -> None:
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
     dp = Dispatcher()
+    dp.message.middleware(DeleteCommandMiddleware())
     dp.include_router(router)
     await setup_bot_commands(bot)
     asyncio.create_task(watchdog_loop())

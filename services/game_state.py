@@ -28,11 +28,14 @@ async def get_active_game(chat_id: int) -> CrocodileGame | None:
     )
 
 
-async def create_game(chat_id: int, chat_type: str, starter: User) -> CrocodileGame:
+async def create_game(
+    chat_id: int, chat_type: str, starter: User, category: str | None = None
+) -> CrocodileGame:
     game = await CrocodileGame.create(
         chat_id=chat_id,
         chat_type=chat_type,
         starter=starter,
+        category=category,
         status="waiting",
         last_activity_at=now_utc(),
     )
@@ -41,7 +44,8 @@ async def create_game(chat_id: int, chat_type: str, starter: User) -> CrocodileG
 
 
 async def start_round(game: CrocodileGame, explainer: User) -> tuple[CrocodileGame, CrocodileRound]:
-    word = await get_random_word()
+    cat = game.category if game.category and game.category != "aralash" else None
+    word = await get_random_word(category=cat)
     claim_at = now_utc() + timedelta(seconds=CLAIM_LOCK_SECONDS)
     game.current_explainer = explainer
     game.current_word = word
