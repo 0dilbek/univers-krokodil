@@ -121,3 +121,17 @@ class CrocodileScore(models.Model):
     class Meta:
         table = "crocodile_scores"
         unique_together = (("game", "user"),)
+
+
+class CrocodileCategory(models.Model):
+    id = fields.IntField(pk=True)
+    slug = fields.CharField(max_length=64, unique=True)
+    display_name = fields.CharField(max_length=128)
+    emoji = fields.CharField(max_length=8, default="📝")
+    order = fields.IntField(default=0)
+    is_active = fields.BooleanField(default=True)
+    is_special = fields.BooleanField(default=False)
+    created_at = fields.DatetimeField(auto_now_add=True)
+
+    class Meta:
+        table = "crocodile_categories"

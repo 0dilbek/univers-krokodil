@@ -44,8 +44,7 @@ async def create_game(
 
 
 async def start_round(game: CrocodileGame, explainer: User) -> tuple[CrocodileGame, CrocodileRound]:
-    cat = game.category if game.category and game.category != "aralash" else None
-    word = await get_random_word(category=cat)
+    word = await get_random_word(category=game.category)
     claim_at = now_utc() + timedelta(seconds=CLAIM_LOCK_SECONDS)
     game.current_explainer = explainer
     game.current_word = word

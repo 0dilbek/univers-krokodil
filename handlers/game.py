@@ -5,8 +5,8 @@ from aiogram.filters import Command
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from keyboards.game import category_keyboard, claim_keyboard, round_keyboard
-from services.words import CATEGORIES
-from models.crocodile import CrocodileGame
+from services.words import get_category_label
+from models.crocodile import CrocodileCategory, CrocodileGame
 from services.chats import upsert_crocodile_chat_from_message
 from services.game_runtime import locked_game
 from services.game_state import (
@@ -78,7 +78,7 @@ async def play(message: Message) -> None:
     async with locked_game(message.chat.id):
         game = await get_active_game(message.chat.id)
         if game:
-            cat_label = CATEGORIES.get(game.category or "", "Aralash")
+            cat_label = await get_category_label(game.category)
             await message.answer(
                 f"🎮 Bu guruhda krokodil o'yini allaqachon boshlangan.\n"
                 f"📂 Turkum: <b>{cat_label}</b>\nKim so'zni tushuntiradi?",
@@ -87,7 +87,7 @@ async def play(message: Message) -> None:
             return
     await message.answer(
         "🎮 Krokodil o'yinini boshlash uchun so'zlar turkumini tanlang:",
-        reply_markup=category_keyboard(message.chat.id),
+        reply_markup=await category_keyboard(message.chat.id),
     )
 
 
@@ -115,7 +115,7 @@ async def select_category(callback: CallbackQuery) -> None:
     async with locked_game(chat_id):
         game = await get_active_game(chat_id)
         if game:
-            cat_label = CATEGORIES.get(game.category or "", "Aralash")
+            cat_label = await get_category_label(game.category)
             await callback.message.edit_text(
                 f"🎮 Bu guruhda krokodil o'yini allaqachon boshlangan.\n"
                 f"📂 Turkum: <b>{cat_label}</b>\nKim so'zni tushuntiradi?",
@@ -123,9 +123,10 @@ async def select_category(callback: CallbackQuery) -> None:
             )
             await callback.answer()
             return
-        stored_cat = category if category != "aralash" else None
+        cat_obj = await CrocodileCategory.get_or_none(slug=category)
+        stored_cat = None if (not cat_obj or cat_obj.is_special) else category
         game = await create_game(chat_id, callback.message.chat.type, user, category=stored_cat)
-        cat_label = CATEGORIES.get(category, "Aralash")
+        cat_label = await get_category_label(category)
         sent = await callback.message.edit_text(
             f"🎮 Krokodil o'yini boshlandi!\n"
             f"📂 Turkum: <b>{cat_label}</b>\nKim so'zni tushuntiradi?",

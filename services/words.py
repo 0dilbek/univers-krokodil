@@ -3,7 +3,7 @@ from pathlib import Path
 from random import randrange
 
 from constants import CATEGORIES_WORDS_FILE, DEFAULT_WORDS_FILE
-from models.crocodile import CrocodileWord
+from models.crocodile import CrocodileCategory, CrocodileWord
 
 
 _SPACE_RE = re.compile(r"\s+")
@@ -76,13 +76,14 @@ def word_mask(text: str) -> str:
     return " ".join(parts)
 
 
-CATEGORIES = {
-    "oddiy": "Oddiy so'zlar",
-    "kino": "Kino va multfilm",
-    "tarixiy": "Tarixiy shaxslar",
-    "musiqa": "Musiqa",
-}
 CATEGORIES_FILE = CATEGORIES_WORDS_FILE
+
+
+async def get_category_label(slug: str | None) -> str:
+    if not slug:
+        return "Aralash (barcha)"
+    cat = await CrocodileCategory.get_or_none(slug=slug)
+    return cat.display_name if cat else slug
 
 
 async def get_random_word(language: str = "uz", category: str | None = None) -> CrocodileWord:
