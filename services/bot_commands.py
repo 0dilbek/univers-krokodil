@@ -18,8 +18,11 @@ async def setup_bot_commands(bot: Bot) -> None:
     group_commands = [
         BotCommand(command="play", description="Krokodil o'yinini boshlash"),
         BotCommand(command="stop", description="O'yinni tugatish"),
-        BotCommand(command="top", description="Guruh TOP reytingi"),
-        BotCommand(command="reyting", description="Guruh reytingini ko'rish"),
+        BotCommand(command="top", description="Guruh TOP reytingi (barcha vaqt)"),
+        BotCommand(command="top1", description="Bugungi TOP"),
+        BotCommand(command="top7", description="Haftalik TOP"),
+        BotCommand(command="top30", description="Oylik TOP"),
+        BotCommand(command="reyting", description="Joriy o'yin reytingi"),
         BotCommand(command="profile", description="Krokodil profilingiz"),
         BotCommand(command="profil", description="Krokodil profilingiz"),
         BotCommand(command="help", description="O'yin qo'llanmasi"),

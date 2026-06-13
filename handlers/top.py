@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+
 from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
@@ -9,6 +11,10 @@ from services.permissions import is_group_admin, is_group_chat
 from services.users import display_name
 
 router = Router()
+
+
+def _since(days: int) -> datetime:
+    return datetime.now(timezone.utc) - timedelta(days=days)
 
 
 @router.message(Command("top"))
@@ -34,6 +40,45 @@ async def top(message: Message) -> None:
     for index, profile in enumerate(profiles, start=1):
         lines.append(f"{index}. {display_name(profile.user)} - {profile.points} ball")
     await message.answer("\n".join(lines))
+
+
+@router.message(Command("top1"))
+async def top1(message: Message) -> None:
+    if not is_group_chat(message):
+        await message.answer("Bu buyruq faqat guruhda ishlaydi.")
+        return
+    text = await group_rating_text(
+        message.chat.id,
+        since=_since(1),
+        title="📅 Bugungi TOP",
+    )
+    await message.answer(text)
+
+
+@router.message(Command("top7"))
+async def top7(message: Message) -> None:
+    if not is_group_chat(message):
+        await message.answer("Bu buyruq faqat guruhda ishlaydi.")
+        return
+    text = await group_rating_text(
+        message.chat.id,
+        since=_since(7),
+        title="📆 Haftalik TOP",
+    )
+    await message.answer(text)
+
+
+@router.message(Command("top30"))
+async def top30(message: Message) -> None:
+    if not is_group_chat(message):
+        await message.answer("Bu buyruq faqat guruhda ishlaydi.")
+        return
+    text = await group_rating_text(
+        message.chat.id,
+        since=_since(30),
+        title="🗓 Oylik TOP",
+    )
+    await message.answer(text)
 
 
 @router.message(Command("reyting"))

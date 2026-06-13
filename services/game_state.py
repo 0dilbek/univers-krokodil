@@ -190,9 +190,12 @@ async def scoreboard_text(game: CrocodileGame) -> str:
     return "\n".join(lines)
 
 
-async def group_rating_text(chat_id: int) -> str:
+async def group_rating_text(chat_id: int, since: datetime | None = None, title: str = "🏆 Guruh reytingi") -> str:
+    filters: dict = {"game__chat_id": chat_id}
+    if since:
+        filters["game__created_at__gte"] = since
     scores = (
-        await CrocodileScore.filter(game__chat_id=chat_id)
+        await CrocodileScore.filter(**filters)
         .prefetch_related("user")
         .order_by("-points", "created_at")
     )
@@ -206,13 +209,13 @@ async def group_rating_text(chat_id: int) -> str:
         item["correct_answers"] += score.correct_answers
 
     if not totals:
-        return "Bu guruhda hali reyting yo'q."
+        return "Bu davrda o'yin o'ynalmagan yoki ball yig'ilmagan."
 
     rows = sorted(
         totals.values(),
         key=lambda item: (-int(item["points"]), -int(item["correct_answers"]), str(item["name"])),
     )[:10]
-    lines = ["🏆 Guruh reytingi:"]
+    lines = [f"{title}:"]
     for index, item in enumerate(rows, start=1):
-        lines.append(f"{index}. {escape(str(item['name']))} - {item['points']} ball")
+        lines.append(f"{index}. {escape(str(item['name']))} — {item['points']} ball")
     return "\n".join(lines)

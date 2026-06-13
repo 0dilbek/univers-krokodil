@@ -1,9 +1,10 @@
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from aiogram import Bot
-from aiogram.exceptions import TelegramBadRequest, TelegramForbiddenError
+from aiogram.exceptions import TelegramBadRequest, TelegramForbiddenError, TelegramRetryAfter
 from aiogram.types import Chat as TelegramChat
 
+from constants import CHAT_REFRESH_INTERVAL_SECONDS
 from models.crocodile import CrocodileChat
 
 
@@ -25,7 +26,13 @@ async def upsert_crocodile_chat_from_message(chat: TelegramChat, bot: Bot) -> Cr
     record.title = chat.title
     record.username = chat.username
     record.is_active = True
-    await enrich_chat_record(record, bot)
+
+    threshold = now_utc() - timedelta(seconds=CHAT_REFRESH_INTERVAL_SECONDS)
+    needs_refresh = record.last_synced_at is None or record.last_synced_at < threshold
+    if needs_refresh:
+        await enrich_chat_record(record, bot)
+    else:
+        await record.save()
     return record
 
 
@@ -37,6 +44,9 @@ async def enrich_chat_record(record: CrocodileChat, bot: Bot) -> None:
         record.username = chat.username
         if getattr(chat, "invite_link", None):
             record.invite_link = chat.invite_link
+    except TelegramRetryAfter:
+        await record.save()
+        return
     except (TelegramBadRequest, TelegramForbiddenError):
         record.is_active = False
         record.last_synced_at = now_utc()
